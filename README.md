@@ -55,6 +55,8 @@ sh deploy.sh
 sh run.sh
 ```
 
+Finished, application will start on : https://127.0.0.1:4009/
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
