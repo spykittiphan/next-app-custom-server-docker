@@ -42,6 +42,19 @@ Step 2: update file package.json
     }
 ```
 
+Step 3: install package fs https path, run command
+
+```bash
+npm install fs https path
+```
+
+Step 4: run shell script file
+
+```bash
+sh deploy.sh
+sh run.sh
+```
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
