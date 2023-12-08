@@ -57,6 +57,12 @@ sh run.sh
 
 Finished, application will start on : https://127.0.0.1:4009/
 
+can generate new localhost certificate file :
+```bash
+openssl req -x509 -sha256 -nodes -newkey rsa:2048 -days 365 -keyout localhost.key -out localhost.crt
+```
+
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
