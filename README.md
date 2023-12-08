@@ -2,16 +2,34 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+First, add server.js:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+var https = require('https');
+var fs = require('fs');
+const path = require('path')
+const { parse } = require('url');
+
+const next = require('next')
+const port = parseInt(process.env.PORT) || 4002
+const dev = true;
+const app = next({ dev, dir: __dirname })
+const handle = app.getRequestHandler()
+
+var options = {
+    key: fs.readFileSync('cert/localhost.key'),
+    cert: fs.readFileSync('cert/localhost.crt'),
+};
+
+app.prepare().then(() => {
+    https.createServer(options, (req, res) => {
+        const parsedUrl = parse(req.url, true);
+        handle(req, res, parsedUrl);
+    }).listen(port, err => {
+        if (err) throw err
+        console.log(`> Ready on localhost:${port}`)
+    })
+})
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
